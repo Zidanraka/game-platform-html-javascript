@@ -8,6 +8,8 @@ var gambar = {
   playBtn: "btn-play.png",
   maxBtn: "maxBtn.png",
   minBtn: "minBtn.png",
+  help: "Help.png",
+  back: "btnBack.png",
   idle: "Idle.png",
   run: "Run.png",
   jump: "Jump.png",
@@ -32,6 +34,7 @@ function startScreen() {
   hapusLayar("#99627a");
   tampilkanGambar(dataGambar.logo, 600, 250);
   var startBtn = tombol(dataGambar.startBtn, 600, 350);
+
   if (tekan(startBtn)) {
     jalankan(halamanCover);
   }
@@ -40,17 +43,51 @@ function halamanCover() {
   hapusLayar("#99627a");
   gambarFull(dataGambar.cover);
   var playBtn = tombol(dataGambar.playBtn, 1100, 500);
+  var howtoPlay = tombol(dataGambar.help, 100, 500);
   if (tekan(playBtn) || game.spasi) {
     if (game.aktif) {
       //mulai game dengan menambahkan transisi
       game.status = "mulai";
-      game.level = 1;
+      game.level = "1";
       game.score = 0;
       game.warnaTransisi = "#116d6e";
       transisi("out", setAwal);
     }
   }
+  // Jika tombol howtoplay ditekan transisi ke halaman (How to Play)
+  if (tekan(howtoPlay)) {
+    game.warnaTransisi = "#116d6e";
+    transisi("out", setHow);
+  }
   resizeBtn(1150, 50);
+  efekTransisi();
+}
+
+// Transisi ke halaman (How to play)
+function setHow() {
+  transisi("in");
+  jalankan(HowtoPlay);
+}
+
+// Transisi kembali ke halaman cover
+function backHome() {
+  transisi("in");
+  jalankan(halamanCover);
+}
+
+// Halaman (How to play)
+function HowtoPlay() {
+  hapusLayar("#99627a");
+  teks("How to Play", 450, 100, "Cursive-bold-30pt-left-black");
+  teks("Right Arrow : Go to Right", 350, 230, "Cursive-bold-30pt-left-black");
+  teks("Left Arrow : Go to Left", 350, 330, "Cursive-bold-30pt-left-black");
+  teks("Up Arrow : Jump", 350, 430, "Cursive-bold-30pt-left-black");
+  teks("Enjoy Playing 👾", 410, 540, "Cursive-bold-30pt-left-black");
+  var btnBack = tombol(dataGambar.back, 100, 100);
+  if (tekan(btnBack)) {
+    game.warnaTransisi = "#116d6e";
+    transisi("out", backHome);
+  }
   efekTransisi();
 }
 
@@ -96,6 +133,7 @@ function ulangiPermainan() {
   setAwal();
   game.aktif = true;
   jalankan(gameLoop);
+  game.score = 0;
 }
 
 function gameLoop() {
@@ -112,7 +150,8 @@ function gameLoop() {
   latar(dataGambar.bg, 0, 0.5);
   buatLevel();
   cekItem();
-  teks(game.score, 600, 60, "Calibri-bold-30pt-left-abuabu");
+  teks(game.score, 550, 60, "Cursive-bold-30pt-left-ungu");
+  teks("Level " + game.level, 50, 60, "Cursive-bold-30pt-left-ungu");
   efekTransisi();
 }
 
