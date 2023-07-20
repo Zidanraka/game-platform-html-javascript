@@ -26,6 +26,12 @@ var gambar = {
   musuh1Idle: "enemy1Idle.png",
   musuh1Run: "enemy1Run.png",
   musuh1Hit: "enemy1Hit.png",
+  musuh2Hit: "enemy2Hit.png",
+  musuh2Idle: "enemy2Idle.png",
+  musuh2Run: "enemy2Run.png",
+  musuh3Hit: "enemy3Hit.png",
+  musuh3Idle: "enemy3Idle.png",
+  musuh3Run: "enemy3Run.png",
   bendera: "Flag.png",
 };
 //file suara yang dipakai dalam game
@@ -193,6 +199,16 @@ function setAwal() {
   musuh1.animJalan = dataGambar.musuh1Run;
   musuh1.animMati = dataGambar.musuh1Hit;
   setPlatformEnemy(1, musuh1);
+  var musuh2 = {};
+  musuh2.animDiam = dataGambar.musuh2Idle;
+  musuh2.animJalan = dataGambar.musuh2Run;
+  musuh2.animMati = dataGambar.musuh2Hit;
+  setPlatformEnemy(2, musuh2);
+  var musuh3 = {};
+  musuh3.animDiam = dataGambar.musuh3Idle;
+  musuh3.animJalan = dataGambar.musuh3Run;
+  musuh3.animMati = dataGambar.musuh3Hit;
+  setPlatformEnemy(3, musuh3);
   //set trigger
   setPlatformTrigger(1, dataGambar.bendera);
   if (game.status == "mulai") {
