@@ -62,7 +62,7 @@ function halamanCover() {
     if (game.aktif) {
       //mulai game dengan menambahkan transisi
       game.status = "mulai";
-      game.level = "1";
+      game.level = "4";
       game.score = 0;
       game.warnaTransisi = "#116d6e";
       transisi("out", setAwal);
