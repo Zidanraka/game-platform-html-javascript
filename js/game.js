@@ -202,9 +202,9 @@ function setAwal() {
   musuh1.animMati = dataGambar.musuh1Hit;
   setPlatformEnemy(1, musuh1);
   var musuh2 = {};
-  musuh2.animDiam = dataGambar.musuh1Idle;
-  musuh2.animJalan = dataGambar.musuh1Run;
-  musuh2.animMati = dataGambar.musuhHit;
+  musuh2.animDiam = dataGambar.musuh2Idle;
+  musuh2.animJalan = dataGambar.musuh2Run;
+  musuh2.animMati = dataGambar.musuh2Hit;
   setPlatformEnemy(2, musuh2);
   var musuh3 = {};
   musuh3.animDiam = dataGambar.musuh3Idle;
