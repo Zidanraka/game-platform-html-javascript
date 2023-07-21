@@ -67,12 +67,6 @@ function setAwal() {
   //set item
   setPlatformItem(1, dataGambar.item1);
   setPlatformItem(2, dataGambar.item2);
-  //set musuh
-  var musuh1 = {};
-  musuh1.animDiam = dataGambar.musuh1Idle;
-  musuh1.animJalan = dataGambar.musuh1Run;
-  musuh1.animMati = dataGambar.musuh1Hit;
-  setPlatformEnemy(1, musuh1);
 }
 
 function ulangiPermainan() {
