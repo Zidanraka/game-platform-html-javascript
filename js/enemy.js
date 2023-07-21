@@ -20,6 +20,14 @@ var gambar = {
   musuh1Idle: "enemy1Idle.png",
   musuh1Run: "enemy1Run.png",
   musuh1Hit: "enemy1Hit.png",
+  musuh2Hit: "enemy2Hit.png",
+  musuh2Idle: "enemy2Idle.png",
+  musuh2In: "enemy2In.png",
+  musuh2Out: "enemy2Out.png",
+  musuh2Run: "enemy2Run.png",
+  musuh3Hit: "enemy3Hit.png",
+  musuh3Idle: "enemy3Idle.png",
+  musuh3Run: "enemy3Run.png",
 };
 //file suara yang dipakai dalam game
 var suara = {};
