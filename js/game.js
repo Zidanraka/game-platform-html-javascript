@@ -210,7 +210,7 @@ function setAwal() {
   musuh3.animDiam = dataGambar.musuh3Idle;
   musuh3.animJalan = dataGambar.musuh3Run;
   musuh3.animMati = dataGambar.musuh3Hit;
-  setPlatformEnemy(3, musuh3, 52, 34);
+  setPlatformEnemy(3, musuh3, 52, 32);
   //set trigger
   setPlatformTrigger(1, dataGambar.bendera);
   if (game.status == "mulai") {
