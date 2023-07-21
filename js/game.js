@@ -200,17 +200,17 @@ function setAwal() {
   musuh1.animDiam = dataGambar.musuh1Idle;
   musuh1.animJalan = dataGambar.musuh1Run;
   musuh1.animMati = dataGambar.musuh1Hit;
-  setPlatformEnemy(1, musuh1);
+  setPlatformEnemy(1, musuh1, 32, 32);
   var musuh2 = {};
   musuh2.animDiam = dataGambar.musuh2Idle;
   musuh2.animJalan = dataGambar.musuh2Run;
   musuh2.animMati = dataGambar.musuh2Hit;
-  setPlatformEnemy(2, musuh2);
+  setPlatformEnemy(2, musuh2, 46, 30);
   var musuh3 = {};
   musuh3.animDiam = dataGambar.musuh3Idle;
   musuh3.animJalan = dataGambar.musuh3Run;
   musuh3.animMati = dataGambar.musuh3Hit;
-  setPlatformEnemy(3, musuh3);
+  setPlatformEnemy(3, musuh3, 52, 34);
   //set trigger
   setPlatformTrigger(1, dataGambar.bendera);
   if (game.status == "mulai") {
