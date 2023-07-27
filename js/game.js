@@ -8,12 +8,7 @@ var gambar = {
   playBtn: "btn-play.png",
   maxBtn: "maxBtn.png",
   minBtn: "minBtn.png",
-  help: "Help.png",
-  aboutBtn: "About.png",
-  back: "btnBack.png",
-  home: "Setting.png",
-  exit: "Exit.png",
-  resume: "Resume.png",
+  start: "Start.png",
   idle: "Idle.png",
   run: "Run.png",
   jump: "Jump.png",
@@ -28,33 +23,56 @@ var gambar = {
   musuh1Hit: "enemy1Hit.png",
   musuh2Hit: "enemy2Hit.png",
   musuh2Idle: "enemy2Idle.png",
-  musuh2In: "enemy2In.png",
-  musuh2Out: "enemy2Out.png",
   musuh2Run: "enemy2Run.png",
   musuh3Hit: "enemy3Hit.png",
   musuh3Idle: "enemy3Idle.png",
   musuh3Run: "enemy3Run.png",
   bendera: "Flag.png",
+  finish: "Finish.png",
+  help: "Help.png",
+  howtoplay: "HowToPlay.png",
+  howtoplayind: "HowToPlayInd.png",
+  pesan: "Message.png",
+  aboutBtn: "About.png",
+  back: "btnBack.png",
+  home: "Setting.png",
+  textSetting: "textSetting.png",
+  restart: "Restart.png",
+  quit: "Quit.png",
+  craig1: "Craig1.png",
+  craig2: "Craig2.png",
+  confirmExit: "ConfirmExit.png",
+  exit: "Exit.png",
+  resume: "Resume.png",
+  congrats: "Congratulation.png",
+  tropi: "Trophy.png",
+  wintittle: "FinishTittle.png",
+  kredit: "Credit.png",
+  menuBtn: "menuBtn.png",
+  playAgain: "playAgain.png",
 };
 //file suara yang dipakai dalam game
-var suara = {};
+var suara = {
+  bgm: "backgroundMusic.mp3",
+  jump: "Jump.wav",
+};
 
 //load gambar dan suara lalu jalankan startScreen
 loading(gambar, suara, startScreen);
 
 function startScreen() {
-  hapusLayar("#99627a");
+  hapusLayar("#990099");
   tampilkanGambar(dataGambar.logo, 600, 250);
   var startBtn = tombol(dataGambar.startBtn, 600, 350);
-
   if (tekan(startBtn)) {
     jalankan(halamanCover);
   }
 }
 
 function halamanCover() {
-  hapusLayar("#99627a");
+  hapusLayar("#990099");
   gambarFull(dataGambar.cover);
+  // musik(dataSuara.bgm, 50);
   var playBtn = tombol(dataGambar.playBtn, 1100, 500);
   var howtoPlay = tombol(dataGambar.help, 100, 550);
   var about = tombol(dataGambar.aboutBtn, 50, 50);
@@ -102,27 +120,11 @@ function backHome() {
 
 // Halaman (How to play)
 function HowtoPlay() {
-  hapusLayar("#99627a");
-  teks("How to Play", 320, 100, "Cursive-bold-30pt-left-black");
-  teks("Right Arrow : Go to Right", 270, 180, "Cursive-bold-20pt-left-black");
-  teks("Left Arrow : Go to Left", 270, 230, "Cursive-bold-20pt-left-black");
-  teks("Up Arrow : Jump", 270, 280, "Cursive-bold-20pt-left-black");
-  teks("Cara Bermain", 720, 100, "Cursive-bold-30pt-left-black");
-  teks(
-    "Arah Kanan : Bergerak ke Kanan",
-    670,
-    180,
-    "Cursive-bold-20pt-left-black"
-  );
-  teks(
-    "Arah Kiri : Bergerak ke Kiri",
-    670,
-    230,
-    "Cursive-bold-20pt-left-black"
-  );
-  teks("Arah Atas : Lompat", 670, 280, "Cursive-bold-20pt-left-black");
-  teks("Enjoy Playing 👾", 450, 500, "Cursive-bold-32pt-left-black");
-  var btnBack = tombol(dataGambar.back, 80, 80);
+  hapusLayar("#990099");
+  tampilkanGambar(dataGambar.howtoplay, 330, 180);
+  tampilkanGambar(dataGambar.howtoplayind, 850, 180);
+  tampilkanGambar(dataGambar.pesan, 600, 550);
+  var btnBack = tombol(dataGambar.back, 50, 50);
   if (tekan(btnBack)) {
     game.warnaTransisi = "#116d6e";
     transisi("out", backHome);
@@ -132,7 +134,7 @@ function HowtoPlay() {
 
 // Halaman About
 function about() {
-  hapusLayar("#99627a");
+  hapusLayar("#990099");
   teks("About", 550, 100, "Cursive-bold-30pt-left-black");
   teks(
     "This game tell us about a guy named 'Craig', who has to get out of a place full of traps and various kind",
@@ -172,7 +174,7 @@ function about() {
     "Cursive-bold-14pt-left-black"
   );
   teks("'Craig'.", 100, 505, "Cursive-bold-14pt-left-black");
-  var btnBack = tombol(dataGambar.back, 80, 80);
+  var btnBack = tombol(dataGambar.back, 50, 50);
   if (tekan(btnBack)) {
     game.warnaTransisi = "#116d6e";
     transisi("out", backHome);
@@ -205,18 +207,20 @@ function setAwal() {
   musuh2.animDiam = dataGambar.musuh2Idle;
   musuh2.animJalan = dataGambar.musuh2Run;
   musuh2.animMati = dataGambar.musuh2Hit;
-  setPlatformEnemy(2, musuh2, 46, 30);
+  setPlatformEnemy(2, musuh2, 52, 32);
   var musuh3 = {};
   musuh3.animDiam = dataGambar.musuh3Idle;
   musuh3.animJalan = dataGambar.musuh3Run;
   musuh3.animMati = dataGambar.musuh3Hit;
-  setPlatformEnemy(3, musuh3, 52, 32);
+  setPlatformEnemy(3, musuh3, 32, 34);
   //set trigger
   setPlatformTrigger(1, dataGambar.bendera);
   if (game.status == "mulai") {
     game.status = "main";
     mulaiPermainan();
   }
+  setPlatformTrigger(2, dataGambar.start);
+  setPlatformTrigger(3, dataGambar.finish);
 }
 
 function mulaiPermainan() {
@@ -232,7 +236,7 @@ function ulangiPermainan() {
 }
 
 function gameLoop() {
-  hapusLayar("#9c9695");
+  hapusLayar("#990099");
   if (game.kanan) {
     gerakLevel(game.hero, 3, 0);
   } else if (game.kiri) {
@@ -240,39 +244,62 @@ function gameLoop() {
   }
   if (game.atas) {
     gerakLevel(game.hero, 0, -10);
+    // mainkanSuara(dataSuara.jump);
   }
 
   latar(dataGambar.bg, 0, 0.5);
   buatLevel();
   cekItem();
-  teks(game.score, 550, 60, "Monaco-bold-30pt-left-ungu");
+  teks(game.score, 600, 60, "Monaco-bold-30pt-left-ungu");
   teks("Level " + game.level, 50, 60, "Monaco-bold-30pt-left-ungu");
   // Tombol setting dalam game
   const home = tombol(dataGambar.home, 1150, 50);
   if (tekan(home)) {
     game.warnaTransisi = "#116d6e";
-    transisi("out", setHome);
+    jalankan(setHome);
   }
   efekTransisi();
 }
 
 // Transisi ke halaman Setting
 function setHome() {
-  transisi("in");
   jalankan(pilihanHome);
 }
 
 // Halaman Setting
 function pilihanHome() {
-  hapusLayar("#99627a");
-  teks("Do you want to Exit?", 400, 100, "Cursive-bold-30pt-left-black");
-  var btnBack = tombol(dataGambar.back, 80, 80);
-  var exit = tombol(dataGambar.exit, 470, 250);
-  var resume = tombol(dataGambar.resume, 750, 250);
+  hapusLayar("#990099");
+  tampilkanGambar(dataGambar.textSetting, 600, 150);
+  tampilkanGambar(dataGambar.craig1, 200, 450);
+  tampilkanGambar(dataGambar.craig2, 1000, 450);
+  var restart = tombol(dataGambar.restart, 600, 250);
+  var quit = tombol(dataGambar.quit, 600, 300);
+  var btnBack = tombol(dataGambar.back, 50, 50);
+  if (tekan(restart)) {
+    if (game.aktif) {
+      game.status = "mulai";
+      game.level = "1";
+      game.score = 0;
+      game.warnaTransisi = "#116d6e";
+      transisi("out", setAwal);
+    }
+  }
+  if (tekan(quit)) {
+    jalankan(confirmQuit);
+  }
   if (tekan(btnBack)) {
     game.warnaTransisi = "#116d6e";
     transisi("out", mulaiPermainan);
   }
+  efekTransisi();
+}
+
+// Halaman Konfirmasi Quit
+function confirmQuit() {
+  hapusLayar("#990099");
+  tampilkanGambar(dataGambar.confirmExit, 600, 150);
+  var exit = tombol(dataGambar.exit, 470, 300);
+  var resume = tombol(dataGambar.resume, 750, 300);
   if (tekan(exit)) {
     game.warnaTransisi = "#116d6e";
     transisi("out", backHome);
@@ -298,15 +325,78 @@ function cekItem() {
     game.aktif = false;
     transisi("out", naikLevel);
   }
+  if (game.triggerID == 3) {
+    game.triggerID = 0;
+    game.aktif = false;
+    transisi("out", winner);
+  }
 }
 
 function naikLevel() {
   game.level++;
-  if (game.level >= 3) {
+  if (game.level >= 4) {
     transisi("in");
     jalankan(halamanCover);
   } else {
     game.status = "mulai";
     setAwal();
   }
+}
+
+function winner() {
+  game.level++;
+  if ((game.level = 3));
+  transisi("in");
+  jalankan(tampilanWinner);
+}
+
+function tampilanWinner() {
+  hapusLayar("#990099");
+  tampilkanGambar(dataGambar.congrats, 600, 150);
+  tampilkanGambar(dataGambar.tropi, 600, 250);
+  tampilkanGambar(dataGambar.wintittle, 600, 400);
+  var credit = tombol(dataGambar.kredit, 100, 550);
+  var mainMenu = tombol(dataGambar.menuBtn, 600, 550);
+  var playAgain = tombol(dataGambar.playAgain, 1100, 550);
+  if (tekan(credit)) {
+    game.warnaTransisi = "#116d6e";
+    transisi("out", setCredit);
+  }
+  if (tekan(mainMenu)) {
+    game.warnaTransisi = "#116d6e";
+    transisi("out", backHome);
+  }
+  if (tekan(playAgain)) {
+    if (game.aktif) {
+      game.status = "mulai";
+      game.level = "1";
+      game.score = 0;
+      game.warnaTransisi = "#116d6e";
+      transisi("out", setAwal);
+    }
+  }
+  efekTransisi();
+}
+
+function setCredit() {
+  transisi("in");
+  jalankan(credit);
+}
+
+function setWinner() {
+  transisi("in");
+  jalankan(tampilanWinner);
+}
+
+function credit() {
+  hapusLayar("#990099");
+  tampilkanGambar(dataGambar.congrats, 600, 150);
+  tampilkanGambar(dataGambar.tropi, 600, 250);
+  tampilkanGambar(dataGambar.wintittle, 600, 400);
+  var btnBack = tombol(dataGambar.back, 50, 50);
+  if (tekan(btnBack)) {
+    game.warnaTransisi = "#116d6e";
+    transisi("out", setWinner);
+  }
+  efekTransisi();
 }
