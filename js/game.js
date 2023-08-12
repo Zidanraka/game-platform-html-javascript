@@ -57,7 +57,7 @@ var suara = {
   bunuh: "enemyKilled.mp3",
   finish: "levelCleared.mp3",
   win: "Win.mp3",
-  dead: "uhdeath.mp3"
+  dead: "uhdeath.mp3",
 };
 
 //load gambar dan suara lalu jalankan startScreen
