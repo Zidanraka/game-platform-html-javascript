@@ -31,8 +31,6 @@ var gambar = {
   finish: "Finish.png",
   help: "Help.png",
   howtoplay: "HowToPlay.png",
-  howtoplayind: "HowToPlayInd.png",
-  pesan: "Message.png",
   aboutBtn: "About.png",
   back: "btnBack.png",
   home: "Setting.png",
@@ -44,12 +42,11 @@ var gambar = {
   confirmExit: "ConfirmExit.png",
   exit: "Exit.png",
   resume: "Resume.png",
-  congrats: "Congratulation.png",
-  tropi: "Trophy.png",
-  wintittle: "FinishTittle.png",
+  winner: "Winner.png",
   kredit: "Credit.png",
   menuBtn: "menuBtn.png",
   playAgain: "playAgain.png",
+  textCredit: "TextCredit.png",
 };
 //file suara yang dipakai dalam game
 var suara = {
@@ -121,9 +118,7 @@ function backHome() {
 // Halaman (How to play)
 function HowtoPlay() {
   hapusLayar("#990099");
-  tampilkanGambar(dataGambar.howtoplay, 330, 180);
-  tampilkanGambar(dataGambar.howtoplayind, 850, 180);
-  tampilkanGambar(dataGambar.pesan, 600, 550);
+  tampilkanGambar(dataGambar.howtoplay, 620, 300);
   var btnBack = tombol(dataGambar.back, 50, 50);
   if (tekan(btnBack)) {
     game.warnaTransisi = "#116d6e";
@@ -350,11 +345,10 @@ function winner() {
   jalankan(tampilanWinner);
 }
 
+// Tampilan Winner
 function tampilanWinner() {
   hapusLayar("#990099");
-  tampilkanGambar(dataGambar.congrats, 600, 150);
-  tampilkanGambar(dataGambar.tropi, 600, 250);
-  tampilkanGambar(dataGambar.wintittle, 600, 400);
+  tampilkanGambar(dataGambar.winner, 600, 250);
   var credit = tombol(dataGambar.kredit, 100, 550);
   var mainMenu = tombol(dataGambar.menuBtn, 600, 550);
   var playAgain = tombol(dataGambar.playAgain, 1100, 550);
@@ -378,21 +372,22 @@ function tampilanWinner() {
   efekTransisi();
 }
 
+// Transisi Credit
 function setCredit() {
   transisi("in");
   jalankan(credit);
 }
 
+// Transisi Winner
 function setWinner() {
   transisi("in");
   jalankan(tampilanWinner);
 }
 
+// Tampilan Credit
 function credit() {
   hapusLayar("#990099");
-  tampilkanGambar(dataGambar.congrats, 600, 150);
-  tampilkanGambar(dataGambar.tropi, 600, 250);
-  tampilkanGambar(dataGambar.wintittle, 600, 400);
+  tampilkanGambar(dataGambar.textCredit, 600, 300);
   var btnBack = tombol(dataGambar.back, 50, 50);
   if (tekan(btnBack)) {
     game.warnaTransisi = "#116d6e";

@@ -22,13 +22,12 @@ var gambar = {
   musuh1Hit: "enemy1Hit.png",
   musuh2Hit: "enemy2Hit.png",
   musuh2Idle: "enemy2Idle.png",
-  musuh2In: "enemy2In.png",
-  musuh2Out: "enemy2Out.png",
   musuh2Run: "enemy2Run.png",
   musuh3Hit: "enemy3Hit.png",
   musuh3Idle: "enemy3Idle.png",
   musuh3Run: "enemy3Run.png",
   bendera: "Flag.png",
+  finish: "Finish.png",
 };
 //file suara yang dipakai dalam game
 var suara = {};
@@ -110,11 +109,23 @@ function cekItem() {
     game.triggerID = 0;
     game.aktif = false;
     game.level++;
-    if (game.level >= 3) {
+    if (game.level >= 4) {
       game.level = 1;
       jalankan(halamanCover);
+    }
+    if (game.triggerID == 3) {
+      game.triggerID = 0;
+      game.aktif = false;
+      transisi("out", winner);
     } else {
       setTimeout(ulangiPermainan, 2000);
     }
   }
+}
+
+function winner() {
+  game.level++;
+  if ((game.level = 3));
+  transisi("in");
+  jalankan(tampilanWinner);
 }

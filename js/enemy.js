@@ -22,8 +22,6 @@ var gambar = {
   musuh1Hit: "enemy1Hit.png",
   musuh2Hit: "enemy2Hit.png",
   musuh2Idle: "enemy2Idle.png",
-  musuh2In: "enemy2In.png",
-  musuh2Out: "enemy2Out.png",
   musuh2Run: "enemy2Run.png",
   musuh3Hit: "enemy3Hit.png",
   musuh3Idle: "enemy3Idle.png",
@@ -67,6 +65,22 @@ function setAwal() {
   //set item
   setPlatformItem(1, dataGambar.item1);
   setPlatformItem(2, dataGambar.item2);
+  //set enemy
+  var musuh1 = {};
+  musuh1.animDiam = dataGambar.musuh1Idle;
+  musuh1.animJalan = dataGambar.musuh1Run;
+  musuh1.animMati = dataGambar.musuh1Hit;
+  setPlatformEnemy(1, musuh1, 32, 32);
+  var musuh2 = {};
+  musuh2.animDiam = dataGambar.musuh2Idle;
+  musuh2.animJalan = dataGambar.musuh2Run;
+  musuh2.animMati = dataGambar.musuh2Hit;
+  setPlatformEnemy(2, musuh2, 52, 32);
+  var musuh3 = {};
+  musuh3.animDiam = dataGambar.musuh3Idle;
+  musuh3.animJalan = dataGambar.musuh3Run;
+  musuh3.animMati = dataGambar.musuh3Hit;
+  setPlatformEnemy(3, musuh3, 32, 34);
 }
 
 function ulangiPermainan() {
