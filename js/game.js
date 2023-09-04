@@ -239,9 +239,9 @@ function ulangiPermainan() {
 function gameLoop() {
   hapusLayar("#990099");
   if (game.kanan) {
-    gerakLevel(game.hero, 3, 0, dataSuara.jalan);
+    gerakLevel(game.hero, 2, 0, dataSuara.jalan);
   } else if (game.kiri) {
-    gerakLevel(game.hero, -3, 0, dataSuara.jalan);
+    gerakLevel(game.hero, -2, 0, dataSuara.jalan);
   }
   if (game.atas) {
     gerakLevel(game.hero, 0, -10, dataSuara.jump);
